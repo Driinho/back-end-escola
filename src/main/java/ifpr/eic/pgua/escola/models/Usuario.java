@@ -1,16 +1,16 @@
 package ifpr.eic.pgua.escola.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Usuario {
 
-    private String nomeDeUsuario;
-    private String senha;
-    private String nome;
-    private int idade;
-    private Date dataDeNascimento;
+    protected String nomeDeUsuario;
+    protected String senha;
+    protected String nome;
+    protected int idade;
+    protected LocalDate dataDeNascimento;
 
-    public Usuario(String nomeDeUsuario, String senha, String nome, int idade, Date dataDeNascimento) {
+    public Usuario(String nomeDeUsuario, String senha, String nome, int idade, LocalDate dataDeNascimento) {
         this.nomeDeUsuario = nomeDeUsuario;
         this.senha = senha;
         this.nome = nome;
@@ -50,11 +50,11 @@ public class Usuario {
         this.idade = idade;
     }
 
-    public Date getDataDeNascimento() {
+    public LocalDate getDataDeNascimento() {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(Date dataDeNascimento) {
+    public void setDataDeNascimento(LocalDate dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 }
