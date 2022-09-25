@@ -13,29 +13,29 @@ import br.com.ifpr.escola.models.Professor;
 import br.com.ifpr.escola.repository.ProfessorRepository;
 
 @RestController
-@RequestMapping(value = "/postgres")
+@RequestMapping(value = "/professor")
 public class ProfessorController {
 
     @Autowired
     private ProfessorRepository professorRepository;
 
-    @GetMapping(path = "/professor")
+    @GetMapping
     public List<Professor> buscarProfessor() {
         return professorRepository.findAll();
     }
 
-    @GetMapping(path = "/professor/{id}")
+    @GetMapping(path = "/{id}")
     public Optional<Professor> buscaProfessorPorId(@PathVariable(name = "id", required = true) long id) {
         return professorRepository.findById(id);
     }
 
-    @GetMapping(path = "/professor/autenticar/{nomeDeUsuario}")
+    @GetMapping(path = "/autenticar/{nomeDeUsuario}")
     public Optional<Professor> buscaPorNomeDeUsuario(
             @PathVariable(name = "nomeDeUsuario", required = true) String nomeDeUsuario) {
         return professorRepository.findByNomeDeUsuario(nomeDeUsuario);
     }
 
-    @GetMapping(path = "/professor/autenticar/{nomeDeUsuario}/{senha}")
+    @GetMapping(path = "/autenticar/{nomeDeUsuario}/{senha}")
     public Optional<Professor> autenticar(@PathVariable(name = "nomeDeUsuario", required = true) String nomeDeUsuario,
             @PathVariable(name = "senha", required = true) String senha) {
 
