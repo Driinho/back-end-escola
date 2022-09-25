@@ -8,9 +8,9 @@ public interface AlunoDao {
 
     void insert(Aluno aluno);
 
-    void delete(Aluno Aluno);
+    void delete(Aluno aluno);
 
-    void update(Aluno Aluno);
+    void update(Aluno aluno);
 
     List<Aluno> listarAlunos();
 }

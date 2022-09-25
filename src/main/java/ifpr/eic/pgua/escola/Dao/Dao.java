@@ -10,7 +10,7 @@ public class Dao {
 
     public static Connection getConnection() throws SQLException {
         if (entityManager == null) {
-            return DriverManager.getConnection("****", "***", "***");
+            return DriverManager.getConnection();
         } else {
             return entityManager;
         }

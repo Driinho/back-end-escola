@@ -4,18 +4,33 @@ import java.time.LocalDate;
 
 public class Usuario {
 
+    protected int id;
     protected String nomeDeUsuario;
     protected String senha;
     protected String nome;
-    protected int idade;
     protected LocalDate dataDeNascimento;
 
-    public Usuario(String nomeDeUsuario, String senha, String nome, int idade, LocalDate dataDeNascimento) {
+    public Usuario(int id, String nomeDeUsuario, String senha, String nome, LocalDate dataDeNascimento) {
+        this.id = id;
         this.nomeDeUsuario = nomeDeUsuario;
         this.senha = senha;
         this.nome = nome;
-        this.idade = idade;
         this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public Usuario(String nomeDeUsuario, String senha, String nome, LocalDate dataDeNascimento) {
+        this.nomeDeUsuario = nomeDeUsuario;
+        this.senha = senha;
+        this.nome = nome;
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNomeDeUsuario() {
@@ -40,14 +55,6 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
     }
 
     public LocalDate getDataDeNascimento() {

@@ -6,9 +6,9 @@ public class Professor extends Usuario {
 
     private double salario;
 
-    public Professor(String nomeDeUsuario, String senha, String nome, int idade, LocalDate dataDeNascimento,
+    public Professor(String nomeDeUsuario, String senha, String nome, LocalDate dataDeNascimento,
             double salario) {
-        super(nomeDeUsuario, senha, nome, idade, dataDeNascimento);
+        super(nomeDeUsuario, senha, nome, dataDeNascimento);
         this.salario = salario;
     }
 
