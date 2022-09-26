@@ -31,12 +31,6 @@ public class ProfessorController {
         return professorRepository.findById(id);
     }
 
-    @GetMapping(path = "/professor/autenticar/{nomeDeUsuario}")
-    public Optional<Professor> buscaPorNomeDeUsuario(
-            @PathVariable(name = "nomeDeUsuario", required = true) String nomeDeUsuario) {
-        return professorRepository.findByNomeDeUsuario(nomeDeUsuario);
-    }
-
     @GetMapping(path = "/professor/autenticar/{nomeDeUsuario}/{senha}")
     public Optional<Professor> autenticar(@PathVariable(name = "nomeDeUsuario", required = true) String nomeDeUsuario,
             @PathVariable(name = "senha", required = true) String senha) {
