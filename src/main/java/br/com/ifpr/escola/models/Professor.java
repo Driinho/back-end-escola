@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -23,9 +25,11 @@ public class Professor implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonIgnore
     @Column(name = "nome_de_usuario")
     private String nomeDeUsuario;
 
+    @JsonIgnore
     @Column(name = "senha")
     private String senha;
 
