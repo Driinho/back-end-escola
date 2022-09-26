@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
 
@@ -23,22 +23,27 @@ public class Professor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(Views.Public.class)
     private Long id;
 
-    @JsonIgnore
+    @JsonView(Views.Internal.class)
     @Column(name = "nome_de_usuario")
     private String nomeDeUsuario;
 
-    @JsonIgnore
+    // @JsonIgnore
+    @JsonView(Views.Internal.class)
     @Column(name = "senha")
     private String senha;
 
+    @JsonView(Views.Public.class)
     @Column(name = "nome")
     private String nome;
 
+    @JsonView(Views.Public.class)
     @Column(name = "data_de_nascimento")
     private LocalDate dataDeNascimento;
 
+    @JsonView(Views.Public.class)
     @Column(name = "salario")
     private Double salario;
 }

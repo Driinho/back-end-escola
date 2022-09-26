@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import br.com.ifpr.escola.models.Professor;
+import br.com.ifpr.escola.models.Views;
 import br.com.ifpr.escola.repository.ProfessorRepository;
 
 @RestController
@@ -22,6 +25,7 @@ public class ProfessorController {
     private ProfessorRepository professorRepository;
 
     @GetMapping("/professor")
+    @JsonView(Views.Public.class)
     public List<Professor> buscarProfessor() {
         return professorRepository.findAll();
     }
@@ -31,14 +35,15 @@ public class ProfessorController {
         return professorRepository.findById(id);
     }
 
-    @GetMapping(path = "/professor/autenticar/{nomeDeUsuario}/{senha}")
+    @GetMapping(path = "/professor/login/{nomeDeUsuario}/{senha}")
     public Optional<Professor> autenticar(@PathVariable(name = "nomeDeUsuario", required = true) String nomeDeUsuario,
-            @PathVariable(name = "senha", required = true) String senha) {
+                                        @PathVariable(name = "senha", required = true) String senha) {
 
         return professorRepository.findByNomeDeUsuarioAndSenha(nomeDeUsuario, senha);
     }
 
     @PostMapping(path = "/professor/save")
+    @JsonView(Views.Internal.class)
     public void salvaProfessor(@RequestBody Professor professor) {
         professorRepository.save(professor);
     }
