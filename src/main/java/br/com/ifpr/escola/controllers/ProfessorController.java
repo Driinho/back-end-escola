@@ -31,11 +31,13 @@ public class ProfessorController {
     }
 
     @GetMapping(path = "/professor/{id}")
+    @JsonView(Views.Public.class)
     public Optional<Professor> buscaProfessorPorId(@PathVariable(name = "id", required = true) long id) {
         return professorRepository.findById(id);
     }
 
     @GetMapping(path = "/professor/login/{nomeDeUsuario}/{senha}")
+    @JsonView(Views.Public.class)
     public Optional<Professor> autenticar(@PathVariable(name = "nomeDeUsuario", required = true) String nomeDeUsuario,
                                         @PathVariable(name = "senha", required = true) String senha) {
 
