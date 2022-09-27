@@ -18,25 +18,25 @@ import br.com.ifpr.escola.models.Views;
 import br.com.ifpr.escola.repository.ProfessorRepository;
 
 @RestController
-@RequestMapping(value = "/postgres")
+@RequestMapping(value = "/professor")
 public class ProfessorController {
 
     @Autowired
     private ProfessorRepository professorRepository;
 
-    @GetMapping("/professor")
+    @GetMapping
     @JsonView(Views.Public.class)
     public List<Professor> buscarProfessor() {
         return professorRepository.findAll();
     }
 
-    @GetMapping(path = "/professor/{id}")
+    @GetMapping(path = "/{id}")
     @JsonView(Views.Public.class)
     public Optional<Professor> buscaProfessorPorId(@PathVariable(name = "id", required = true) long id) {
         return professorRepository.findById(id);
     }
 
-    @GetMapping(path = "/professor/login/{nomeDeUsuario}/{senha}")
+    @GetMapping(path = "/login/{nomeDeUsuario}/{senha}")
     @JsonView(Views.Public.class)
     public Optional<Professor> autenticar(@PathVariable(name = "nomeDeUsuario", required = true) String nomeDeUsuario,
                                         @PathVariable(name = "senha", required = true) String senha) {
@@ -44,7 +44,7 @@ public class ProfessorController {
         return professorRepository.findByNomeDeUsuarioAndSenha(nomeDeUsuario, senha);
     }
 
-    @PostMapping(path = "/professor/save")
+    @PostMapping(path = "/save")
     @JsonView(Views.Internal.class)
     public void salvaProfessor(@RequestBody Professor professor) {
         professorRepository.save(professor);

@@ -18,32 +18,32 @@ import br.com.ifpr.escola.models.Views;
 import br.com.ifpr.escola.repository.AlunoRepository;
 
 @RestController
-@RequestMapping("/postgres")
+@RequestMapping("/aluno")
 public class AlunoController {
 
     @Autowired
     private AlunoRepository alunoRepository;
 
-    @GetMapping(path = "/aluno")
+    @GetMapping
     @JsonView(Views.Public.class)
     public List<Aluno> buscarAlunos() {
         return alunoRepository.findAll();
     }
 
-    @GetMapping(path = "/aluno/{id}")
+    @GetMapping(path = "/{id}")
     @JsonView(Views.Public.class)
     public Optional<Aluno> buscarAlunoPorId(@PathVariable(name = "id", required = true) long id) {
         return alunoRepository.findById(id);
     }
 
-    @GetMapping(path = "/aluno/login/{nomeDeUsuario}/{senha}")
+    @GetMapping(path = "/login/{nomeDeUsuario}/{senha}")
     @JsonView(Views.Public.class)
     public Optional<Aluno> autenticar(@PathVariable(name = "nomeDeUsuario", required = true) String nomeDeUsuario,
                                     @PathVariable(name = "senha", required = true) String senha) {
         return alunoRepository.findByNomeDeUsuarioAndSenha(nomeDeUsuario, senha);
     }
 
-    @PostMapping(path = "/aluno/save")
+    @PostMapping(path = "/save")
     @JsonView(Views.Internal.class)
     public void cadastraAluno(@RequestBody Aluno aluno) {
         alunoRepository.save(aluno);
