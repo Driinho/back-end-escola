@@ -30,11 +30,18 @@ public class AlunoController {
         return alunoRepository.findAll();
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/buscar/{id}")
     @JsonView(Views.Public.class)
     public Optional<Aluno> buscarAlunoPorId(@PathVariable(name = "id", required = true) long id) {
         return alunoRepository.findById(id);
     }
+
+    @GetMapping(path = "/buscar/{nomeDeUsuario}")
+    @JsonView(Views.Public.class)
+    public Optional<Aluno> buscarAlunoPorNomeDeUsuario(@PathVariable(name = "nomeDeUsuario", required = true) String nomeDeUsuario) {
+        return alunoRepository.findByNomeDeUsuario(nomeDeUsuario);
+    }
+
 
     @GetMapping(path = "/login/{nomeDeUsuario}/{senha}")
     @JsonView(Views.Public.class)

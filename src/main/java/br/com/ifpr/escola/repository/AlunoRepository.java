@@ -8,5 +8,7 @@ import br.com.ifpr.escola.models.Aluno;
 
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
+    Optional<Aluno> findByNomeDeUsuario(String nomeDeUsuario);
+
     Optional<Aluno> findByNomeDeUsuarioAndSenha(String nomeDeUsuario, String senha);
 }

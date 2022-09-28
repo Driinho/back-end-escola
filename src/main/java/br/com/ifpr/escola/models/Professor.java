@@ -30,7 +30,6 @@ public class Professor implements Serializable {
     @Column(name = "nome_de_usuario")
     private String nomeDeUsuario;
 
-    // @JsonIgnore
     @JsonView(Views.Internal.class)
     @Column(name = "senha")
     private String senha;
